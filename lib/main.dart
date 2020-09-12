@@ -4,15 +4,9 @@ import 'package:flutter/painting.dart';
 import 'package:albaicin_adventure/storyCard.dart';
 import 'package:albaicin_adventure/services/gameService.dart';
 
-void main(){
-     runApp(
-       MaterialApp(
-         title: 'Albaicin Adventures',
-         home: GamePage()
-       )
-     );
+void main() {
+  runApp(MaterialApp(title: 'Albaicin Adventures', home: GamePage()));
 }
-
 
 class GamePage extends StatefulWidget {
   @override
@@ -20,48 +14,59 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
-
-  GameService gameService = GameService(); //creamos una instancia de gameService
+  GameService gameService =
+      GameService(); //creamos una instancia de gameService
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('images/background.jpg'),
-          fit: BoxFit.cover
-        ),
+            image: AssetImage('images/background.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: SafeArea(
-          child:Column(
+          backgroundColor: Colors.transparent,
+          body: SafeArea(
+              child: Column(
             children: [
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               //Texto de la historia
               Expanded(
                 flex: 10,
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Center(
-                    child: StoryCard(gameService.getStoryText())
-                  ),
+                  child: Center(child: StoryCard(gameService.getStoryText())),
                 ),
               ),
               //BOTON 1
               Expanded(
-                flex: 1,
-                child: Container(child: ChooseButton(gameService.getChoice1() , Color(0xDD16d4c41)))
+                  flex: 1,
+                  child: Container(
+                    child: ChooseButton(
+                      gameService.getChoice1(),
+                      Color(0xDD16d4c41),
+                      onPressed: () {
+                        setState(() => gameService.nextStory(bottonNUmber: 1));
+                      },
+                    ),
+                  )),
+              SizedBox(
+                height: 10.0,
               ),
-              SizedBox(height: 10.0,),
               //BOTON 2
               Expanded(
-                  child: ChooseButton(gameService.getChoice2() , Color(0xDD607d8b))
+                child: ChooseButton(
+                  gameService.getChoice2(),
+                  Color(0xDD607d8b),
+                    onPressed: (){
+                      setState(() => gameService.nextStory(bottonNUmber: 2));
+                    },
+                ),
               )
             ],
-          )
-        )
-      ),
+          ))),
     );
   }
 }
