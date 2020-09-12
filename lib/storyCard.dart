@@ -10,12 +10,13 @@ class StoryCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-        color: Color(0xCE78909c),
+        color: Color(0xBC37474f),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Text(
         question,
         style: TextStyle(
+          fontSize: 20.0,
           color: Colors.white70,
           fontFamily: 'MeriendaOne'
         ),

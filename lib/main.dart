@@ -33,8 +33,11 @@ class _GamePageState extends State<GamePage> {
           child:Row(
             children: [
               Expanded(
-                child: Center(
-                  child: StoryCard('fapuioshfasjikdnfjikasnfopasidnfpiasnfdaspjikndfask')
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Center(
+                    child: StoryCard('fapuioshfasjikdnfjikasnfopasidnfpiasnfdaspjikndfask')
+                  ),
                 ),
               )
             ],
