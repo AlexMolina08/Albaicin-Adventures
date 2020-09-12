@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:albaicin_adventure/storyCard.dart';
 
 void main(){
      runApp(
@@ -10,11 +12,35 @@ void main(){
 }
 
 
-class GamePage extends StatelessWidget {
+class GamePage extends StatefulWidget {
+  @override
+  _GamePageState createState() => _GamePageState();
+}
+
+class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('images/background.jpg'),
+          fit: BoxFit.cover
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SafeArea(
+          child:Row(
+            children: [
+              Expanded(
+                child: Center(
+                  child: StoryCard('fapuioshfasjikdnfjikasnfopasidnfpiasnfdaspjikndfask')
+                ),
+              )
+            ],
+          )
+        )
+      ),
     );
   }
 }
