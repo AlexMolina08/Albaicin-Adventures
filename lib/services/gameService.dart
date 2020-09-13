@@ -50,7 +50,7 @@ class GameService {
         ' que no llegas a comprender en su totalidad.\n\nEn fin, eso te pasa por ir por el Albaicin sin saber :(',
         'VOLVER A EMPEZAR',
         'VOLVER A EMPEZAR'),
-    /*8(FIN4)*/Story('"Nah , ¿para que me voy a acercar , estoy demasiado embrujado ahora mismo para pelear"'
+    /*8(FIN4)*/Story('"Nah , ¿para que me voy a acercar ?  estoy demasiado embrujado ahora mismo para pelear"'
         ' pensaste mientras te prendías otra varita mágica.',
         'VOLVER A EMPEZAR',
         'VOLVER A EMPEZAR'),
@@ -60,49 +60,55 @@ class GameService {
     _currentIndx = 0;
   }
 
-  void nextStory({int bottonNUmber}){
-    if(bottonNUmber == 1){
+    void reset() => _currentIndx = 0;
 
-      switch(_currentIndx){
+    void nextStory({int bottonNUmber}){
+      if(bottonNUmber == 1){
 
-        case 0 : _currentIndx = 1;
-        break;
-        case 1 : _currentIndx = 3;
-        break;
-        case 2 :  _currentIndx = 4;
-        break;
-        case 3 : _currentIndx = 5;
-        break;
-        case 4: _currentIndx = 7;
-        break;
+        switch(_currentIndx){
+
+          case 0 : _currentIndx = 1;
+          break;
+          case 1 : _currentIndx = 3;
+          break;
+          case 2 :  _currentIndx = 4;
+          break;
+          case 3 : _currentIndx = 5;
+          break;
+          case 4: _currentIndx = 7;
+          break;
+
         //si es 5 , 6 , 7 ,8 vuelve al principio
-        default: _currentIndx = 0;
+          default: reset();
+          break;
 
-      }
+        }
 
-    }else{
-      switch(_currentIndx){
+      }else{
+        switch(_currentIndx){
 
-        case 0 : _currentIndx = 2;
-        break;
-        case 1 : _currentIndx = 2;
-        break;
-        case 2 :  _currentIndx = 6;
-        break;
-        case 3 : _currentIndx = 7;
-        break;
-        case 4: _currentIndx = 8;
-        break;
+          case 0 : _currentIndx = 2;
+          break;
+          case 1 : _currentIndx = 2;
+          break;
+          case 2 :  _currentIndx = 6;
+          break;
+          case 3 : _currentIndx = 7;
+          break;
+          case 4: _currentIndx = 8;
+          break;
         //si es 5 , 6 , 7 ,8 vuelve al principio
-        default: _currentIndx = 0;
+          default: _currentIndx = 0;
 
+        }
       }
     }
-  }
 
+    bool endOfStoty() => (_currentIndx >= 5 );
 
-  String getStoryText() => _storyPlan[_currentIndx].getText();
-  String getChoice1() => _storyPlan[_currentIndx].getChoice1();
-  String getChoice2() => _storyPlan[_currentIndx].getChoice2();
+    //getters
+    String getStoryText() => _storyPlan[_currentIndx].getText();
+    String getChoice1() => _storyPlan[_currentIndx].getChoice1();
+    String getChoice2() => _storyPlan[_currentIndx].getChoice2();
 
 }

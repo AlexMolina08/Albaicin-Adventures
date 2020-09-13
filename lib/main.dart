@@ -8,6 +8,20 @@ void main() {
   runApp(MaterialApp(title: 'Albaicin Adventures', home: GamePage()));
 }
 
+class AlbaicinAdventure extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage('images/background.jpg'), fit: BoxFit.cover),
+
+      )
+    );
+  }
+}
+
+
 class GamePage extends StatefulWidget {
   @override
   _GamePageState createState() => _GamePageState();
@@ -57,12 +71,15 @@ class _GamePageState extends State<GamePage> {
               ),
               //BOTON 2
               Expanded(
-                child: ChooseButton(
-                  gameService.getChoice2(),
-                  Color(0xDD607d8b),
-                    onPressed: (){
-                      setState(() => gameService.nextStory(bottonNUmber: 2));
-                    },
+                child: Visibility(
+                  visible: ! gameService.endOfStoty(), //el widget es visible si no es el final de la historia
+                  child: ChooseButton(
+                    gameService.getChoice2(),
+                    Color(0xDD607d8b),
+                      onPressed: (){
+                        setState(() => gameService.nextStory(bottonNUmber: 2));
+                      },
+                  ),
                 ),
               )
             ],
